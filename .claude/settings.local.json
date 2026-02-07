@@ -8,7 +8,9 @@
       "WebFetch(domain:www.pandoracaralarm.com)",
       "WebFetch(domain:pandora-alarm.eu)",
       "Bash(perl:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git checkout:*)",
+      "Bash(python3:*)"
     ]
   }
 }

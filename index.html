@@ -580,6 +580,9 @@
 
         .ecosystem-item {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             animation: scaleIn 0.6s ease-out both;
         }
 
@@ -1105,6 +1108,11 @@
             border-radius: 8px;
         }
 
+        /* Cobranding default (desktop) */
+        .cobranding-flex {
+            align-items: flex-start;
+        }
+
         /* Print Styles */
         @media print {
             .slide {
@@ -1224,6 +1232,7 @@
 
             .ecosystem-flow {
                 flex-direction: column;
+                align-items: center;
                 gap: 20px;
             }
 
@@ -1332,10 +1341,28 @@
                 flex-wrap: wrap;
             }
 
-            /* Cobranding slide - stack vertically on tablet */
+            /* Cobranding slide - reorder on tablet/mobile */
             .cobranding-flex {
                 flex-direction: column !important;
-                gap: 20px !important;
+                align-items: center !important;
+                gap: 15px !important;
+            }
+
+            .cobranding-image {
+                flex: none !important;
+                width: auto !important;
+            }
+
+            .cobranding-image img {
+                width: auto !important;
+                max-width: 100% !important;
+            }
+
+            .cobranding-right {
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
             }
         }
 
@@ -1633,14 +1660,22 @@
                 padding: 12px;
             }
 
-            /* Cobranding slide - stack vertically on mobile */
-            .cobranding-flex {
-                flex-direction: column !important;
-                gap: 15px !important;
+            .cobranding-info .info-box {
+                margin-bottom: 0 !important;
+                font-size: 11px;
+            }
+
+            .cobranding-info .info-box h3 {
+                font-size: 13px;
+            }
+
+            .cobranding-cards > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
             }
 
             /* Override inline grids on small screens */
-            .content div[style*="grid-template-columns"] {
+            .content div[style*="grid-template-columns"]:not(.cobranding-right) {
                 grid-template-columns: 1fr !important;
             }
         }
@@ -1986,7 +2021,7 @@
             <p class="subtitle">Ucom-&#x0568; &#x0561;&#x0580;&#x0564;&#x0565;&#x0576; &#x057F;&#x0576;&#x0565;&#x0580;&#x0578;&#x0582;&#x0574; &#x0587; &#x057D;&#x0574;&#x0561;&#x0580;&#x057F;&#x0586;&#x0578;&#x0576;&#x0576;&#x0565;&#x0580;&#x0578;&#x0582;&#x0574; &#x0567;&#x0589; &#x0540;&#x0561;&#x057B;&#x0578;&#x0580;&#x0564; &#x0584;&#x0561;&#x0575;&#x056C;&#x0568; &#x2014; &#x0561;&#x057E;&#x057F;&#x0578;&#x0574;&#x0565;&#x0584;&#x0565;&#x0576;&#x0561;&#x0576;&#x0565;&#x0580;&#x0568;</p>
 
             <div class="ecosystem-flow">
-                <div class="ecosystem-item" style="margin-left: 10%;">
+                <div class="ecosystem-item">
                     <div class="ecosystem-circle">
                         <div class="icon"></div>
                     </div>
@@ -2175,9 +2210,9 @@
         <div class="content" style="background: var(--light-gray);">
             <div class="section-title">Co-Branding | &#x0540;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;</div>
 
-            <div class="cobanding-flex" style="display: flex; gap: 40px; align-items: flex-start;">
+            <div class="cobranding-flex" style="display: flex; gap: 40px;">
                 <!-- Product Image with Ucom Logo -->
-                <div style="flex: 1; position: relative; animation: fadeInLeft 0.8s ease-out;">
+                <div class="cobranding-image" style="flex: 1; position: relative; animation: fadeInLeft 0.8s ease-out;">
                     <div style="position: relative; display: block; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
                         <img src="pandora-vx-4g-gps-fd.png" alt="Pandora VX 4G GPS FD" style="width: 100%; height: auto; display: block;">
                         <!-- White stripe at bottom -->
@@ -2186,33 +2221,37 @@
                 </div>
 
                 <!-- Description -->
-                <div style="flex: 1; animation: fadeInRight 0.8s ease-out;">
-                    <div class="info-box" style="margin-bottom: 20px;">
-                        <h3 style="color: var(--ucom-green);">&#x0533;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;</h3>
-                        <ul>
-                            <li>Ucom-&#x056B; &#x056C;&#x0578;&#x0563;&#x0578;&#x0576; &#x0561;&#x057A;&#x0580;&#x0561;&#x0576;&#x0584;&#x056B; &#x057F;&#x0578;&#x0582;&#x0583;&#x056B; &#x057E;&#x0580;&#x0561;</li>
-                            <li>&#x0540;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;&#x0589; &#x0565;&#x0580;&#x056F;&#x0578;&#x0582; &#x0561;&#x057A;&#x0580;&#x0561;&#x0576;&#x0584;&#x0561;&#x0576;&#x056B;&#x0577;&#x0565;&#x0580;</li>
-                            <li>&#x054F;&#x0565;&#x0572;&#x0561;&#x0564;&#x0580;&#x0578;&#x0582;&#x0574; &#x0568;&#x0576;&#x0564;&#x0563;&#x0580;&#x056F;&#x057E;&#x0561;&#x056E; &#x0561;&#x0574;&#x0565;&#x0576; &#x057D;&#x0561;&#x0580;&#x0584;&#x0578;&#x057E;</li>
-                        </ul>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.2s both;">
-                            <div class="value" style="font-size: 24px;">240+</div>
-                            <div class="description">&#x054F;&#x0565;&#x0572;&#x0561;&#x0564;&#x0580;&#x0578;&#x0582;&#x0574; &#x057F;&#x0561;&#x0580;&#x0565;&#x056F;&#x0561;&#x0576;</div>
-                        </div>
-                        <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.3s both;">
-                            <div class="value" style="font-size: 24px;">Ucom</div>
-                            <div class="description">&#x0532;&#x0561;&#x056A;&#x0561;&#x0576;&#x0578;&#x0580;&#x0564;&#x0576;&#x0565;&#x0580;&#x056B; &#x0561;&#x0573;</div>
+                <div class="cobranding-right" style="flex: 1; animation: fadeInRight 0.8s ease-out;">
+                    <div class="cobranding-info">
+                        <div class="info-box" style="margin-bottom: 20px;">
+                            <h3 style="color: var(--ucom-green);">&#x0533;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;</h3>
+                            <ul>
+                                <li>Ucom-&#x056B; &#x056C;&#x0578;&#x0563;&#x0578;&#x0576; &#x0561;&#x057A;&#x0580;&#x0561;&#x0576;&#x0584;&#x056B; &#x057F;&#x0578;&#x0582;&#x0583;&#x056B; &#x057E;&#x0580;&#x0561;</li>
+                                <li>&#x0540;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;&#x0589; &#x0565;&#x0580;&#x056F;&#x0578;&#x0582; &#x0561;&#x057A;&#x0580;&#x0561;&#x0576;&#x0584;&#x0561;&#x0576;&#x056B;&#x0577;&#x0565;&#x0580;</li>
+                                <li>&#x054F;&#x0565;&#x0572;&#x0561;&#x0564;&#x0580;&#x0578;&#x0582;&#x0574; &#x0568;&#x0576;&#x0564;&#x0563;&#x0580;&#x056F;&#x057E;&#x0561;&#x056E; &#x0561;&#x0574;&#x0565;&#x0576; &#x057D;&#x0561;&#x0580;&#x0584;&#x0578;&#x057E;</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, var(--pandora-dark), var(--pandora-dark-light)); border-radius: 10px; text-align: center; animation: fadeInUp 0.8s ease-out 0.4s both;">
-                        <div style="color: var(--pandora-gold); font-size: 14px; font-weight: bold; margin-bottom: 5px;">
-                            «Pandora + Ucom»
+                    <div class="cobranding-cards">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.2s both;">
+                                <div class="value" style="font-size: 24px;">240+</div>
+                                <div class="description">&#x054F;&#x0565;&#x0572;&#x0561;&#x0564;&#x0580;&#x0578;&#x0582;&#x0574; &#x057F;&#x0561;&#x0580;&#x0565;&#x056F;&#x0561;&#x0576;</div>
+                            </div>
+                            <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.3s both;">
+                                <div class="value" style="font-size: 24px;">Ucom</div>
+                                <div class="description">&#x0532;&#x0561;&#x056A;&#x0561;&#x0576;&#x0578;&#x0580;&#x0564;&#x0576;&#x0565;&#x0580;&#x056B; &#x0561;&#x0573;</div>
+                            </div>
                         </div>
-                        <div style="color: white; font-size: 12px;">
-                            &#x054D;&#x0561; &#x0563;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;&#x056B;&#x0581; &#x0574;&#x0565;&#x056F;&#x0576; &#x0567; &#x2014; &#x0570;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;
+
+                        <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, var(--pandora-dark), var(--pandora-dark-light)); border-radius: 10px; text-align: center; animation: fadeInUp 0.8s ease-out 0.4s both;">
+                            <div style="color: var(--pandora-gold); font-size: 14px; font-weight: bold; margin-bottom: 5px;">
+                                «Pandora + Ucom»
+                            </div>
+                            <div style="color: white; font-size: 12px;">
+                                &#x054D;&#x0561; &#x0563;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;&#x056B;&#x0581; &#x0574;&#x0565;&#x056F;&#x0576; &#x0567; &#x2014; &#x0570;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;
+                            </div>
                         </div>
                     </div>
                 </div>

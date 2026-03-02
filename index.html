@@ -1332,10 +1332,23 @@
                 flex-wrap: wrap;
             }
 
-            /* Cobranding slide - stack vertically on tablet */
+            /* Cobranding slide - responsive layout on tablet */
             .cobranding-flex {
-                flex-direction: column !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
                 gap: 20px !important;
+            }
+
+            .cobranding-image {
+                grid-column: 1 / -1;
+            }
+
+            .cobranding-desc {
+                display: contents !important;
+            }
+
+            .cobranding-ad-options {
+                margin-bottom: 0 !important;
             }
         }
 
@@ -1633,10 +1646,44 @@
                 padding: 12px;
             }
 
-            /* Cobranding slide - stack vertically on mobile */
+            /* Cobranding slide - image top, cards side by side below */
             .cobranding-flex {
-                flex-direction: column !important;
-                gap: 15px !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+
+            .cobranding-image {
+                grid-column: 1 / -1;
+            }
+
+            .cobranding-desc {
+                display: contents !important;
+            }
+
+            .cobranding-ad-options {
+                margin-bottom: 0 !important;
+                font-size: 11px;
+            }
+
+            .cobranding-ad-options h3 {
+                font-size: 13px;
+            }
+
+            .cobranding-ad-options ul {
+                padding-left: 15px;
+            }
+
+            .cobranding-other .metric-box {
+                padding: 10px;
+            }
+
+            .cobranding-other .metric-box .value {
+                font-size: 18px !important;
+            }
+
+            .cobranding-other .metric-box .description {
+                font-size: 10px;
             }
 
             /* Override inline grids on small screens */
@@ -2176,12 +2223,12 @@
 
             <div class="cobranding-flex" style="display: flex; gap: 40px; align-items: flex-start;">
                 <!-- Product Image with Ucom Logo -->
-                <div style="flex: 1; position: relative; animation: fadeInLeft 0.8s ease-out;">
+                <div class="cobranding-image" style="flex: 1; position: relative; animation: fadeInLeft 0.8s ease-out;">
                     <div style="position: relative; display: block; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
                         <img src="pandora-vx-4g-gps-fd.jpg" alt="Pandora VX 4G GPS FD" style="width: 100%; height: auto; display: block;">
                         <!-- Ucom Logo Overlay - percentage-based positioning scales with image -->
-                        <div style="position: absolute; top: 14%; left: 63%; transform: translateX(-50%); background: rgba(0,0,0,0.95); padding: 0.8% 1.5%; border-radius: 4px;">
-                            <img src="ucom_logo.svg" alt="Ucom" style="height: clamp(15.4px, 4.95vw, 28.6px); width: auto; display: block;">
+                        <div style="position: absolute; top: 15%; left: 63%; transform: translateX(-50%); background: rgba(0,0,0,0.95); padding: 0.8% 1.5%; border-radius: 4px;">
+                            <img src="ucom_logo.svg" alt="Ucom" style="height: clamp(18.6px, 6vw, 34.7px); width: auto; display: block;">
                         </div>
                         <!-- White stripe at bottom -->
                         <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 7%; background: white;"></div>
@@ -2189,8 +2236,8 @@
                 </div>
 
                 <!-- Description -->
-                <div style="flex: 1; animation: fadeInRight 0.8s ease-out;">
-                    <div class="info-box" style="margin-bottom: 20px;">
+                <div class="cobranding-desc" style="flex: 1; animation: fadeInRight 0.8s ease-out;">
+                    <div class="cobranding-ad-options info-box" style="margin-bottom: 20px;">
                         <h3 style="color: var(--ucom-green);">&#x0533;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;</h3>
                         <ul>
                             <li>Ucom-&#x056B; &#x056C;&#x0578;&#x0563;&#x0578;&#x0576; &#x0561;&#x057A;&#x0580;&#x0561;&#x0576;&#x0584;&#x056B; &#x057F;&#x0578;&#x0582;&#x0583;&#x056B; &#x057E;&#x0580;&#x0561;</li>
@@ -2199,23 +2246,25 @@
                         </ul>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.2s both;">
-                            <div class="value" style="font-size: 24px;">240+</div>
-                            <div class="description">&#x054F;&#x0565;&#x0572;&#x0561;&#x0564;&#x0580;&#x0578;&#x0582;&#x0574; &#x057F;&#x0561;&#x0580;&#x0565;&#x056F;&#x0561;&#x0576;</div>
+                    <div class="cobranding-other">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.2s both;">
+                                <div class="value" style="font-size: 24px;">240+</div>
+                                <div class="description">&#x054F;&#x0565;&#x0572;&#x0561;&#x0564;&#x0580;&#x0578;&#x0582;&#x0574; &#x057F;&#x0561;&#x0580;&#x0565;&#x056F;&#x0561;&#x0576;</div>
+                            </div>
+                            <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.3s both;">
+                                <div class="value" style="font-size: 24px;">Ucom</div>
+                                <div class="description">&#x0532;&#x0561;&#x056A;&#x0561;&#x0576;&#x0578;&#x0580;&#x0564;&#x0576;&#x0565;&#x0580;&#x056B; &#x0561;&#x0573;</div>
+                            </div>
                         </div>
-                        <div class="metric-box" style="animation: scaleIn 0.5s ease-out 0.3s both;">
-                            <div class="value" style="font-size: 24px;">Ucom</div>
-                            <div class="description">&#x0532;&#x0561;&#x056A;&#x0561;&#x0576;&#x0578;&#x0580;&#x0564;&#x0576;&#x0565;&#x0580;&#x056B; &#x0561;&#x0573;</div>
-                        </div>
-                    </div>
 
-                    <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, var(--pandora-dark), var(--pandora-dark-light)); border-radius: 10px; text-align: center; animation: fadeInUp 0.8s ease-out 0.4s both;">
-                        <div style="color: var(--pandora-gold); font-size: 14px; font-weight: bold; margin-bottom: 5px;">
-                            «Pandora + Ucom»
-                        </div>
-                        <div style="color: white; font-size: 12px;">
-                            &#x054D;&#x0561; &#x0563;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;&#x056B;&#x0581; &#x0574;&#x0565;&#x056F;&#x0576; &#x0567; &#x2014; &#x0570;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;
+                        <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, var(--pandora-dark), var(--pandora-dark-light)); border-radius: 10px; text-align: center; animation: fadeInUp 0.8s ease-out 0.4s both;">
+                            <div style="color: var(--pandora-gold); font-size: 14px; font-weight: bold; margin-bottom: 5px;">
+                                «Pandora + Ucom»
+                            </div>
+                            <div style="color: white; font-size: 12px;">
+                                &#x054D;&#x0561; &#x0563;&#x0578;&#x057E;&#x0561;&#x0566;&#x0564;&#x056B; &#x057F;&#x0561;&#x0580;&#x0562;&#x0565;&#x0580;&#x0561;&#x056F;&#x0576;&#x0565;&#x0580;&#x056B;&#x0581; &#x0574;&#x0565;&#x056F;&#x0576; &#x0567; &#x2014; &#x0570;&#x0561;&#x0574;&#x0561;&#x057F;&#x0565;&#x0572; &#x0562;&#x0580;&#x0565;&#x0576;&#x0564;&#x056B;&#x0576;&#x0563;
+                            </div>
                         </div>
                     </div>
                 </div>

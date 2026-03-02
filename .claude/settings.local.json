@@ -10,7 +10,9 @@
       "Bash(perl:*)",
       "Bash(git init:*)",
       "Bash(git checkout:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(/tmp/gen_ingo.py:*)",
+      "Bash(open:*)"
     ]
   }
 }

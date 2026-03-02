@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pandora &#xD7; Ingo Armenia — Գործընկ. Առաջ.</title>
+<style>
+
+:root {
+  --pg:  #7EBD42;  /* pandora green */
+  --pgl: #9ed066;
+  --pd:  #161f26;  /* pandora dark */
+  --pdl: #1e2a33;
+  --ib:  #1565C0;  /* ingo blue */
+  --ibl: #1976D2;
+  --ibd: #0D47A1;
+  --wh:  #ffffff;
+  --lg:  #f4f6f9;
+  --td:  #1e293b;  /* text dark */
+  --tm:  #8b95a5;  /* text muted */
+  --red: #D32F2F;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, Helvetica, sans-serif; background:var(--lg); color:var(--td); line-height:1.55; }
+
+@keyframes fadeInUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+@keyframes fadeInLeft { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:none} }
+@keyframes fadeIn     { from{opacity:0} to{opacity:1} }
+@keyframes scaleIn    { from{opacity:0;transform:scale(.85)} to{opacity:1;transform:none} }
+@keyframes float      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes barGrow    { from{width:0} to{width:100%} }
+
+/* ── slide ── */
+.slide {
+  width:1280px; min-height:720px; margin:30px auto;
+  background:var(--wh); border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+  overflow:hidden; display:flex; flex-direction:column;
+  page-break-after:always; position:relative;
+}
+
+/* ── header ── */
+.header {
+  background:linear-gradient(135deg,var(--pd) 0%,var(--pdl) 100%);
+  padding:18px 40px; display:flex; align-items:center;
+  justify-content:space-between; border-bottom:3px solid var(--ib); flex-shrink:0;
+}
+.logo-container { display:flex; align-items:center; gap:14px; }
+.logo-pandora   { height:38px; width:auto; }
+.logo-sep       { color:var(--pg); font-size:20px; font-weight:700; }
+.ingo-logo {
+  display:flex; flex-direction:column; align-items:center;
+  background:linear-gradient(135deg,var(--ib),var(--ibl));
+  padding:8px 20px; border-radius:8px; line-height:1.2;
+}
+.ingo-name { color:#fff; font-size:22px; font-weight:900; letter-spacing:4px; }
+.ingo-sub  { color:rgba(255,255,255,.85); font-size:11px; letter-spacing:3px; }
+.header h2 { color:var(--wh); font-size:21px; font-weight:700; animation:fadeInLeft .5s ease both; }
+
+/* ── content + footer ── */
+.content  { flex:1; padding:28px 40px; display:flex; flex-direction:column; gap:18px; }
+.footer   {
+  background:var(--pd); padding:11px 40px;
+  display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.footer span    { color:var(--pg); font-size:11px; font-weight:600; letter-spacing:2px; }
+.footer-logos   { display:flex; align-items:center; gap:10px; }
+.footer-logo    { height:22px; opacity:.9; }
+
+/* ── title slide ── */
+.title-slide {
+  background:linear-gradient(135deg,var(--pd) 0%,#0a1520 50%,var(--ibd) 100%);
+  justify-content:center; align-items:center;
+}
+.title-slide::before {
+  content:''; position:absolute; inset:-50%;
+  background:
+    radial-gradient(circle at 30% 50%,rgba(21,101,192,.15) 0%,transparent 50%),
+    radial-gradient(circle at 70% 50%,rgba(126,189,66,.1)  0%,transparent 50%);
+  animation:float 6s ease-in-out infinite;
+}
+.title-content { text-align:center; z-index:1; padding:50px 80px; animation:fadeIn 1s ease both; }
+.title-logos   { display:flex; align-items:center; justify-content:center; gap:28px; margin-bottom:36px; }
+.title-logos .logo-pandora { height:56px; }
+.title-logos .logo-sep     { color:var(--pg); font-size:32px; }
+.title-logos .ingo-logo    { padding:14px 28px; border-radius:10px; }
+.title-logos .ingo-name    { font-size:30px; }
+.title-logos .ingo-sub     { font-size:13px; }
+.title-main { font-size:44px; font-weight:900; color:#fff; letter-spacing:2px;
+              margin-bottom:14px; text-shadow:0 4px 20px rgba(0,0,0,.5);
+              animation:fadeInUp .8s ease both .3s; }
+.title-main span { color:var(--ibl); }
+.title-sub  { font-size:26px; font-weight:700; color:var(--pg);
+              margin-bottom:10px; animation:fadeInUp .8s ease both .5s; }
+.title-desc { font-size:17px; color:rgba(255,255,255,.7);
+              margin-bottom:36px; animation:fadeInUp .8s ease both .7s; }
+.title-badge {
+  display:inline-block; background:var(--ib); color:#fff;
+  padding:10px 28px; border-radius:30px; font-size:13px;
+  font-weight:600; letter-spacing:1px;
+  animation:fadeInUp .8s ease both .9s;
+}
+.title-footer {
+  position:absolute; bottom:18px; left:0; right:0;
+  display:flex; justify-content:space-between; padding:0 40px;
+  color:rgba(255,255,255,.4); font-size:11px; letter-spacing:2px;
+}
+/* ── section title ── */
+.sec { font-size:17px; font-weight:700; color:var(--ib); margin-bottom:14px;
+       padding-bottom:7px; border-bottom:2px solid rgba(21,101,192,.2);
+       animation:fadeInLeft .5s ease both; }
+
+/* ── stats grid ── */
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; animation:fadeInUp .6s ease both .2s; }
+.stats.c3 { grid-template-columns:repeat(3,1fr); }
+.scard {
+  background:linear-gradient(135deg,var(--pd),var(--pdl));
+  border-radius:12px; padding:18px; text-align:center;
+  border-top:3px solid var(--ib); transition:transform .3s;
+}
+.scard:hover { transform:translateY(-3px); }
+.scard .num   { font-size:30px; font-weight:900; color:var(--pg); display:block; }
+.scard .lbl   { font-size:12px; color:rgba(255,255,255,.7); margin-top:4px; }
+
+/* ── two / three col ── */
+.two   { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.three { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+
+/* ── card ── */
+.card {
+  background:var(--lg); border-radius:12px; padding:18px;
+  border-left:4px solid var(--ib); animation:fadeInUp .5s ease both;
+}
+.card.g  { border-left-color:var(--pg); }
+.card h4 { font-size:13px; font-weight:700; color:var(--ib); margin-bottom:9px;
+           text-transform:uppercase; letter-spacing:.5px; }
+.card.g h4 { color:#4a7c1a; }
+.card ul   { list-style:none; }
+.card ul li { font-size:13px; color:var(--td); padding:4px 0 4px 16px; position:relative; }
+.card ul li::before { content:'›'; position:absolute; left:0; color:var(--ib); font-weight:700; }
+.card.g ul li::before { color:var(--pg); }
+
+/* ── model cards ── */
+.mcard {
+  background:var(--wh); border-radius:14px; padding:22px;
+  box-shadow:0 4px 16px rgba(0,0,0,.08); border-top:4px solid;
+  animation:scaleIn .5s ease both;
+}
+.mcard.ma { border-top-color:var(--ib); }
+.mcard.mb { border-top-color:var(--pg); }
+.mcard.mc { border-top-color:#F59E0B; }
+.mbadge   {
+  display:inline-block; padding:3px 11px; border-radius:20px;
+  font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:9px;
+}
+.ma .mbadge { background:var(--ib); color:#fff; }
+.mb .mbadge { background:var(--pg); color:#fff; }
+.mc .mbadge { background:#F59E0B; color:#fff; }
+.mcard h3  { font-size:14px; font-weight:700; margin-bottom:11px; color:var(--td); }
+.mcard ul  { list-style:none; }
+.mcard ul li {
+  font-size:12px; padding:5px 0 5px 17px; position:relative;
+  color:var(--td); border-bottom:1px solid rgba(0,0,0,.05);
+}
+.mcard ul li::before { content:'✓'; position:absolute; left:0; font-size:11px; top:6px; }
+.ma ul li::before { color:var(--ib); }
+.mb ul li::before { color:var(--pg); }
+.mc ul li::before { color:#F59E0B; }
+
+/* ── highlight box ── */
+.hbox {
+  background:linear-gradient(135deg,var(--ib),var(--ibl));
+  color:#fff; border-radius:12px; padding:18px 22px;
+  animation:fadeInUp .5s ease both .4s;
+}
+.hbox.g  { background:linear-gradient(135deg,var(--pg),var(--pgl)); }
+.hbox.rd { background:#fff; border:2px solid var(--red); color:var(--td); }
+.hbox.rd h4 { color:var(--red); opacity:1; }
+.hbox.rd .big { color:var(--red); }
+.hbox.rd p { opacity:1; color:var(--tm); }
+.hbox h4 { font-size:12px; letter-spacing:1px; opacity:.8; margin-bottom:5px; }
+.hbox .big { font-size:34px; font-weight:900; }
+.hbox p    { font-size:12px; opacity:.9; margin-top:3px; }
+
+/* ── table ── */
+.dtbl { width:100%; border-collapse:collapse; animation:fadeInUp .5s ease both .3s; font-size:13px; }
+.dtbl th { background:var(--pd); color:var(--wh); padding:11px 13px; text-align:left; font-size:12px; letter-spacing:.4px; }
+.dtbl th:first-child { border-radius:8px 0 0 0; }
+.dtbl th:last-child  { border-radius:0 8px 0 0; }
+.dtbl td { padding:9px 13px; border-bottom:1px solid #e8edf2; color:var(--td); }
+.dtbl tr:hover td    { background:rgba(21,101,192,.04); }
+.dtbl tr:last-child td { border-bottom:none; }
+.dtbl .pr   { color:var(--ib); font-weight:700; }
+.dtbl .feat { background:rgba(21,101,192,.05); }
+
+/* ── ROI layout ── */
+.roi { display:grid; grid-template-columns:1fr 38px 1fr; align-items:center; gap:0; }
+.rcol { background:var(--lg); border-radius:12px; padding:18px; }
+.rcol.after { background:linear-gradient(135deg,var(--pd),var(--pdl)); color:#fff; }
+.rcol h4 { font-size:12px; font-weight:700; color:var(--tm); letter-spacing:1px;
+           margin-bottom:14px; text-transform:uppercase; }
+.rcol.after h4 { color:rgba(255,255,255,.6); }
+.rvs  { text-align:center; font-size:18px; font-weight:900; color:var(--ib); }
+.rrow { display:flex; justify-content:space-between; align-items:center;
+        padding:7px 0; border-bottom:1px solid rgba(0,0,0,.06); font-size:13px; }
+.rcol.after .rrow { border-color:rgba(255,255,255,.1); }
+.rrow:last-child  { border-bottom:none; font-weight:700; }
+.rrow .v  { font-weight:700; color:var(--ib); }
+.rcol.after .rrow .v { color:var(--pg); font-size:15px; }
+
+/* ── phases ── */
+.phases { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.pcard  {
+  background:var(--wh); border-radius:12px; padding:18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.07); text-align:center;
+  animation:fadeInUp .5s ease both;
+}
+.pnum {
+  width:42px; height:42px; background:linear-gradient(135deg,var(--ib),var(--ibl));
+  color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:19px; font-weight:900; margin:0 auto 10px;
+}
+.pcard h4 { font-size:13px; font-weight:700; color:var(--td); margin-bottom:7px; }
+.pdur  { display:inline-block; background:rgba(21,101,192,.1); color:var(--ib);
+         padding:2px 9px; border-radius:20px; font-size:11px; font-weight:600; margin-bottom:9px; }
+.pcard ul  { list-style:none; text-align:left; }
+.pcard ul li {
+  font-size:12px; color:var(--tm); padding:3px 0 3px 12px; position:relative;
+}
+.pcard ul li::before { content:'·'; position:absolute; left:0; color:var(--ib); font-size:16px; line-height:1; top:3px; }
+
+/* ── cta bar ── */
+.cta {
+  background:linear-gradient(135deg,var(--pd),var(--ibd));
+  border-radius:12px; padding:14px 22px;
+  display:flex; justify-content:space-between; align-items:center;
+  animation:fadeInUp .5s ease both .6s;
+  flex-wrap:wrap; gap:10px;
+}
+.cta span   { color:rgba(255,255,255,.8); font-size:13px; }
+.cta strong { color:var(--pg); font-size:14px; }
+
+/* ── theft case ── */
+.tcase { background:var(--wh); border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,.08);
+         overflow:hidden; animation:fadeInUp .5s ease both; }
+.tcase-hdr { padding:13px 18px; display:flex; justify-content:space-between; align-items:center; }
+.tcase-hdr.mazda    { background:linear-gradient(135deg,#1565C0,#1976D2); color:#fff; }
+.tcase-hdr.chevrolet{ background:#fff; border-bottom:3px solid var(--red); color:var(--td); }
+.tcase-hdr h3 { font-size:15px; font-weight:700; }
+.loss-badge { background:rgba(0,0,0,.2); padding:3px 11px; border-radius:20px; font-size:13px; font-weight:700; }
+.tcase-body { padding:14px 18px; }
+.titem {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:7px 0; border-bottom:1px solid #f0f0f0; font-size:13px;
+}
+.titem:last-child { border-bottom:none; }
+.titem .cost { font-weight:700; color:var(--red); }
+
+/* ── contact slide ── */
+.ty-slide { background:linear-gradient(135deg,var(--pd) 0%,#0a1520 50%,var(--ibd) 100%); }
+.cgrid    { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.ccard    {
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12);
+  border-radius:14px; padding:26px; text-align:center;
+  animation:scaleIn .5s ease both;
+}
+.cicon    { font-size:30px; margin-bottom:10px; }
+.ccard h4 { color:rgba(255,255,255,.6); font-size:11px; letter-spacing:2px;
+            text-transform:uppercase; margin-bottom:7px; }
+.ccard p  { color:#fff; font-size:15px; font-weight:600; }
+.ccard p small { display:block; color:rgba(255,255,255,.6); font-size:12px; font-weight:400; margin-top:3px; }
+
+@media print { .slide { margin:0; border-radius:0; box-shadow:none; } }
+
+/* ── contact / thank-you slide ── */
+.ty-slide .content { background:transparent !important; }
+</style>
+</head>
+<body>
+
+<div class="slide title-slide">
+    <div class="title-content">
+        <div class="title-logos">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+<p class="title-sub">Համագործակցության Առաջարկ</p>
+        <p class="title-desc">Ավտոմոբիլային Անվտանգություն &mdash; Ամուր Ապահովագրություն</p>
+        <span class="title-badge">2026 &mdash; Փոխշահավետ Համագործակցություն</span>
+    </div>
+    <div class="title-footer">
+        <span>PANDORA ALARM ARMENIA</span>
+        <span>+374 98 22 34 64</span>
+        <span>Yerevan, Griboedovi 25/23</span>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="header">
+        <div class="logo-container">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+        <h2>Խնդրի Ձևակերպում</h2>
+    </div>
+    <div class="content">
+        <p style="font-size:14px;color:var(--tm);">
+            Հայաստանում լայն տարածվում է հետևյալ մեքենաների մասերի գողությունը
+        </p>
+
+        <!-- 4 theft-case columns -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1;">
+
+            <!-- Mazda + Honda -->
+            <div class="tcase" style="animation-delay:.1s;display:flex;flex-direction:column;">
+                <div class="tcase-hdr mazda">
+                    <h3>Mazda / Honda</h3>
+                    <span style="font-size:12px;opacity:.8;">Ռադար / Սենսոր</span>
+                </div>
+                <div class="tcase-body" style="flex:1;">
+                    <div class="titem"><span>Հայելիներ</span></div>
+                    <div class="titem"><span>Դիստրոնիկ (Ռադար)</span></div>
+                </div>
+            </div>
+
+            <!-- Mercedes G-class -->
+            <div class="tcase" style="animation-delay:.2s;display:flex;flex-direction:column;">
+                <div class="tcase-hdr" style="background:linear-gradient(135deg,#1B5E20,#2E7D32);color:#fff;">
+                    <h3>Mercedes G-class</h3>
+                    <span style="font-size:12px;opacity:.8;">Պահեստամաս</span>
+                </div>
+                <div class="tcase-body" style="flex:1;">
+                    <div class="titem"><span>Պահեստային անվադողի կափարիչ</span></div>
+                </div>
+            </div>
+
+            <!-- Porsche Cayenne -->
+            <div class="tcase" style="animation-delay:.3s;display:flex;flex-direction:column;">
+                <div class="tcase-hdr" style="background:linear-gradient(135deg,#4A148C,#6A1B9A);color:#fff;">
+                    <h3>Porsche Cayenne</h3>
+                    <span style="font-size:12px;opacity:.8;">Լուսավորություն</span>
+                </div>
+                <div class="tcase-body" style="flex:1;">
+                    <div class="titem"><span>Լուսարձակներ</span></div>
+                </div>
+            </div>
+
+            <!-- Chevrolet Volt -->
+            <div class="tcase" style="animation-delay:.4s;display:flex;flex-direction:column;">
+                <div class="tcase-hdr chevrolet">
+                    <h3>Chevrolet Volt</h3>
+                    <span style="font-size:12px;opacity:.8;">Դիմային հատված</span>
+                </div>
+                <div class="tcase-body" style="flex:1;">
+                    <div class="titem"><span>Լուսարձակներ</span></div>
+                    <div class="titem"><span>Առջևի հարվածամեղմիչ</span></div>
+                    <div class="titem"><span>Շարժիչի կափարիչ</span></div>
+                    <div class="titem"><span>Հայելիներ</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3 impact stat cards -->
+        <div class="stats c3" style="animation-delay:.4s;">
+            <div class="scard" style="border-top-color:var(--red);">
+                <span class="num" style="color:var(--red);">&#x2191;&#x2191;</span>
+                <span class="lbl">Բարձրացող հաճախություն</span>
+            </div>
+            <div class="scard" style="border-top-color:#F59E0B;">
+                <span class="num" style="color:#F59E0B;">&#x1F501;</span>
+                <span class="lbl">Կրկնվող դեպքեր նույն մեքենաների</span>
+            </div>
+            <div class="scard" style="border-top-color:var(--ib);">
+                <span class="num" style="color:var(--pg);">LOCK</span>
+                <span class="lbl">Pandora-ի լուծումը</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <span>PANDORA ALARM ARMENIA</span>
+        <div class="footer-logos">
+            <img src="Logo_Pandora_eu.png" alt="Pandora" class="footer-logo">
+        </div>
+    </div>
+</div>
+<div class="slide">
+    <div class="header">
+        <div class="logo-container">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+        <h2>Մեր Լուծումը</h2>
+    </div>
+    <div class="content">
+
+        <div class="two" style="gap:22px;">
+            <div>
+                <h3 class="sec">🔩 Մեխանիկական Պաշտպանիչ Համակարգեր</h3>
+                <div class="card" style="animation-delay:.1s;margin-bottom:14px;">
+                    <h4>Սկզբունքը</h4>
+                    <ul>
+                        <li>Անտեսանելի ամրացում &mdash; տեսողականորեն չի երևում</li>
+                        <li>Չհեռացվող ֆիքսացիա առանց վնասման</li>
+                        <li>Հատուկ կոնկրետ մոդելների համար</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h3 class="sec">🛡 Pandora &mdash; Պրեմիում Անվտանգություն</h3>
+                <div class="card g" style="animation-delay:.3s;margin-bottom:14px;">
+                    <h4>Խելացի Ահազանգ &amp; Tracking</h4>
+                    <ul>
+                        <li>GPS / GSM վերահսկում 24/7</li>
+                        <li>Իրական ժամանակի ծանուցումներ</li>
+                        <li>Հակաառևանգման ակտիվ պաշտպանություն</li>
+                        <li>Տեսաձայնագրության ակտիվացում</li>
+                        <li>&lt;0.1% գողություն Pandora-ով մեքենաների</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="animation-delay:.6s;background:linear-gradient(135deg,var(--pd),var(--ibd));border-radius:14px;padding:22px 32px;display:flex;align-items:center;gap:32px;">
+            <div style="display:flex;align-items:center;gap:18px;flex:1;">
+                <div style="background:var(--pg);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="font-size:22px;">🔒</span>
+                </div>
+                <div>
+                    <div style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Արդյունք</div>
+                    <div style="color:#fff;font-size:16px;font-weight:700;">Մեխանիկական + Թվային պաշտպանություն</div>
+                </div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.15);align-self:stretch;"></div>
+            <div style="flex:1;text-align:center;">
+                <div style="color:var(--pg);font-size:22px;font-weight:900;">Loss Ratio ↓</div>
+                <div style="color:rgba(255,255,255,.75);font-size:13px;margin-top:4px;">Ingo Armenia-ի փոխհատուցումը կտրուկ նվազում է</div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.15);align-self:stretch;"></div>
+            <div style="display:flex;align-items:center;gap:18px;flex:1;justify-content:flex-end;">
+                <div style="text-align:right;">
+                    <div style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Նպատակ</div>
+                    <div style="color:#fff;font-size:16px;font-weight:700;">Առավելագույն պաշտպանություն</div>
+                </div>
+                <div style="background:var(--ib);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="font-size:22px;">🛡</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <span>PANDORA ALARM ARMENIA</span>
+        <div class="footer-logos">
+            <img src="Logo_Pandora_eu.png" alt="Pandora" class="footer-logo">
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="header">
+        <div class="logo-container">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+        <h2>Ինչու Է Սա Շահավետ Ingo Armenia-ի Համար</h2>
+    </div>
+    <div class="content">
+
+        <div class="two" style="gap:22px;">
+            <div>
+                <h3 class="sec">💰 Ֆինանսական Շահավետություն</h3>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <div class="card" style="animation-delay:.1s;padding:14px 18px;">
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <span style="font-size:22px;flex-shrink:0;">1️⃣</span>
+                            <span style="font-size:13px;">Նվազում է <strong>փոխհատուցումըների քանակը</strong></span>
+                        </div>
+                    </div>
+                    <div class="card" style="animation-delay:.15s;padding:14px 18px;">
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <span style="font-size:22px;flex-shrink:0;">2️⃣</span>
+                            <span style="font-size:13px;">Նվազում է <strong>միջին վնասի չափը</strong></span>
+                        </div>
+                    </div>
+                    <div class="card" style="animation-delay:.2s;padding:14px 18px;">
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <span style="font-size:22px;flex-shrink:0;">3️⃣</span>
+                            <span style="font-size:13px;">Կրճատվում են <strong>fraud / staging դեպքերը</strong></span>
+                        </div>
+                    </div>
+                    <div class="card" style="animation-delay:.25s;padding:14px 18px;">
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <span style="font-size:22px;flex-shrink:0;">4️⃣</span>
+                            <span style="font-size:13px;">Բարելավվում է <strong>loss ratio-ն</strong> կոնկրետ մոդելների</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <span>PANDORA ALARM ARMENIA</span>
+        <div class="footer-logos">
+            <img src="Logo_Pandora_eu.png" alt="Pandora" class="footer-logo">
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="header">
+        <div class="logo-container">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+        <h2>Համագործակցության Մոդելներ</h2>
+    </div>
+    <div class="content">
+
+        <p style="font-size:14px;color:var(--tm);">Ingo Armenia-ին առաջարկում ենք 3 Համագործակցության Մոդել</p>
+        <div class="three">
+            <div class="mcard ma" style="animation-delay:.1s">
+                <span class="mbadge">MODEL A</span>
+                <h3>Զեղչ Ապահովագրվածների Համար</h3>
+                <ul>
+                    <li>Ingo-ն տրամադրում է <strong>5&ndash;15% զեղչ</strong> այն հաճախորդներին, ովքեր տեղադրում են պաշտպանիչ համակարգ</li>
+                    <li>Pandora Armenia-ն տրամադրում է <strong>հատուկ գին</strong> Ingo հաճախորդների համար</li>
+                    <li style="font-weight:700;color:var(--ib);">✅ Win-Win — հաճախորդը շահում է, Ingo-ն նվազեցնում է ռիսկը</li>
+                </ul>
+            </div>
+            <div class="mcard mb" style="animation-delay:.2s">
+                <span class="mbadge">MODEL B</span>
+                <h3>Պարտադիր Պաշտպանություն Բարձր Ռիսկային Մոդելների Համար</h3>
+                <ul>
+                    <li><strong>Mazda/Honda/Mercedes G-class/Porsche Cayenne/Chevrolet Volt</strong> մոդելներ</li>
+                    <li>CASCO պայմանագրի կնքման ժամանակ &rarr; <strong>պարտադիր պաշտպանիչ համակարգ</strong></li>
+                    <li style="font-weight:700;color:#4a7c1a;">✅ Ուղղակիորեն նվազեցնում է ռիսկը ապահովագրողի համար</li>
+                </ul>
+            </div>
+            <div class="mcard mc" style="animation-delay:.3s">
+                <span class="mbadge">MODEL C</span>
+                <h3>Համատեղ Ակցիա</h3>
+                <ul>
+                    <li>Համատեղ <strong>գովազդային արշավ</strong></li>
+                    <li><strong>"Ապահովագրված և պաշտպանված"</strong> փաթեթ</li>
+                    <li>Premium հաճախորդների համար <strong>հատուկ առաջարկ</strong></li>
+                    <li style="font-weight:700;color:#b45309;">✅ Շուկայական դիրքի ամրապնդում</li>
+                </ul>
+            </div>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--pd),var(--ibd));border-radius:14px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+            <div style="display:flex;align-items:center;gap:14px;">
+                <div style="background:var(--pg);border-radius:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">🚀</div>
+                <div>
+                    <div style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Ճկունություն</div>
+                    <div style="color:#fff;font-size:15px;font-weight:700;">Սկսել ցանկացած մոդելից</div>
+                </div>
+            </div>
+            <div style="color:var(--pg);font-size:26px;font-weight:900;">կամ</div>
+            <div style="display:flex;align-items:center;gap:14px;">
+                <div style="background:var(--ib);border-radius:10px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">⚡</div>
+                <div>
+                    <div style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Առավելագույն արդյունք</div>
+                    <div style="color:#fff;font-size:15px;font-weight:700;">Համատեղել բոլոր 3 մոդելները</div>
+                </div>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.15);align-self:stretch;"></div>
+            <div style="color:rgba(255,255,255,.7);font-size:13px;font-style:italic;max-width:200px;text-align:right;">
+                ըստ Ingo Armenia-ի ռազմավարության
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <span>PANDORA ALARM ARMENIA</span>
+        <div class="footer-logos">
+            <img src="Logo_Pandora_eu.png" alt="Pandora" class="footer-logo">
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <div class="header">
+        <div class="logo-container">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+        <h2>Մեր Պարտավորությունները &amp; Հավելյալ Արժեք Ingo-ի Համար</h2>
+    </div>
+    <div class="content">
+
+        <div class="two" style="gap:22px;">
+            <div>
+                <h3 class="sec">Pandora Armenia-ի Պարտավորությունները</h3>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div class="card" style="animation-delay:.1s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">🏅</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:var(--ib);margin-bottom:4px;">Սերտիֆիկացված Տեղադրում</div>
+                                <div style="font-size:12px;color:var(--tm);">Պաշտոնական հավաստագրված կենտրոններ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="animation-delay:.15s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">🔧</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:var(--ib);margin-bottom:4px;">Երաշխիքային Սպասարկում</div>
+                                <div style="font-size:12px;color:var(--tm);">Տեղադրումից հետո ամբողջական երաշխիք</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="animation-delay:.2s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">⚡</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:var(--ib);margin-bottom:4px;">Արագ Սպասարկում Ապահովագրական Դեպքի Ժամանակ</div>
+                                <div style="font-size:12px;color:var(--tm);">Գողությունից հետո արագ արձագանք և աջակցություն</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="animation-delay:.25s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">📊</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:var(--ib);margin-bottom:4px;">Տվյալների Տրամադրում</div>
+                                <div style="font-size:12px;color:var(--tm);">Գողության փորձերի վերաբերյալ GPS տվյալներ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="sec">⭐ Հավելյալ Արժեք Ingo-ի Համար</h3>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div class="card g" style="animation-delay:.35s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">🏆</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:#4a7c1a;margin-bottom:4px;">Բարձր Մրցունակություն Շուկայում</div>
+                                <div style="font-size:12px;color:var(--tm);">Եզակի առաջարկ մրցակիցների համեմատ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card g" style="animation-delay:.4s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">📦</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:#4a7c1a;margin-bottom:4px;">Նոր Պրոդուկտային Փաթեթ</div>
+                                <div style="font-size:12px;color:var(--tm);">"Ապահովագրություն + պաշտպանություն" &mdash; նոր հատված</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card g" style="animation-delay:.45s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">🤝</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:#4a7c1a;margin-bottom:4px;">Հաճախորդների Վստահության Բարձրացում</div>
+                                <div style="font-size:12px;color:var(--tm);">Հաճախորդների պահպանման աճ</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card g" style="animation-delay:.5s;padding:16px 18px;">
+                        <div style="display:flex;align-items:flex-start;gap:14px;">
+                            <span style="font-size:26px;flex-shrink:0;">🎯</span>
+                            <div>
+                                <div style="font-weight:700;font-size:14px;color:#4a7c1a;margin-bottom:4px;">Ռիսկերի Կառավարման Իրական Գործիք</div>
+                                <div style="font-size:12px;color:var(--tm);">Ոչ թե հետագա գնահատում, այլ ակտիվ կանխարգելում</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <span>PANDORA ALARM ARMENIA</span>
+        <div class="footer-logos">
+            <img src="Logo_Pandora_eu.png" alt="Pandora" class="footer-logo">
+        </div>
+    </div>
+</div>
+
+<div class="slide ty-slide" style="background:linear-gradient(135deg,var(--pd) 0%,#0a1520 50%,var(--ibd) 100%);">
+    <div class="header">
+        <div class="logo-container">
+            <img src="Logo_Pandora_eu.png" alt="Pandora Logo" class="logo-pandora">
+            <span class="logo-sep">&#xD7;</span>
+            <div class="ingo-logo">
+                <span class="ingo-name">INGO</span>
+                <span class="ingo-sub">ARMENIA</span>
+            </div>
+        </div>
+        <h2 style="color:white;">Կապ &amp; Հաջորդ Քայլ</h2>
+    </div>
+    <div class="content" style="justify-content:center;align-items:center;text-align:center;background:transparent;">
+        <p style="color:rgba(255,255,255,.65);font-size:16px;margin-bottom:32px;">
+            Պատրաստ ենք սկսել փորձնական Ծրագիրը ցանկացած Մոդելով։<br>
+            Կապ հաստատեք հաջորդ քայլը նախանշելու համար։
+        </p>
+        <div class="cgrid" style="width:100%;max-width:880px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+            <div class="ccard" style="animation-delay:.1s;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:26px;text-align:center;">
+                <div style="font-size:30px;margin-bottom:10px;">📞</div>
+                <h4 style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;">ՀԵՌԱԽՈՍ</h4>
+                <p style="color:#fff;font-size:15px;font-weight:600;">+374 98 22 34 64</p>
+            </div>
+            <div class="ccard" style="animation-delay:.2s;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:26px;text-align:center;">
+                <div style="font-size:30px;margin-bottom:10px;">📍</div>
+                <h4 style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;">ՀԱՍՑԵ</h4>
+                <p style="color:#fff;font-size:15px;font-weight:600;">Երևան<small style="display:block;color:rgba(255,255,255,.6);font-size:12px;font-weight:400;margin-top:3px;">Գրիբոյեդովի 25/23</small></p>
+            </div>
+            <div class="ccard" style="animation-delay:.3s;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:26px;text-align:center;">
+                <div style="font-size:30px;margin-bottom:10px;">🌐</div>
+                <h4 style="color:rgba(255,255,255,.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;">ՎԵԲ ԿԱՅՔ</h4>
+                <p style="color:#fff;font-size:15px;font-weight:600;">pandora-alarm.am</p>
+            </div>
+        </div>
+        <div style="margin-top:40px;animation:fadeInUp .8s ease both .8s;">
+            <p style="font-size:26px;font-weight:700;color:white;margin-bottom:8px;">
+                Շնորհակалություն Ingo Armenia-ին! 🙏
+            </p>
+            <p style="font-size:15px;color:rgba(255,255,255,.6);">
+                Միասին կարողանք ավելի անվտանգ դարձնել Հայաստանի ավտոշուկան
+            </p>
+        </div>
+    </div>
+    <div class="title-footer" style="position:absolute;bottom:18px;left:0;right:0;display:flex;justify-content:space-between;padding:0 40px;color:rgba(255,255,255,.4);font-size:11px;letter-spacing:2px;">
+        <span>PANDORA ALARM ARMENIA &copy; 2025</span>
+        <span>+374 98 22 34 64</span>
+        <span>pandora-alarm.am</span>
+    </div>
+</div>
+</body>
+</html>
